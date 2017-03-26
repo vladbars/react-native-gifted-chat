@@ -1,14 +1,12 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
+import { View, StyleSheet,
 } from 'react-native';
 
 import Avatar from './Avatar';
 import Bubble from './Bubble';
 import Day from './Day';
 
-import {isSameUser, isSameDay} from './utils';
+import { isSameUser, isSameDay } from './utils';
 
 export default class Message extends React.Component {
 
@@ -41,10 +39,10 @@ export default class Message extends React.Component {
   }
 
   renderAvatar() {
-    if (this.props.user._id !== this.props.currentMessage.user._id) {
-      const avatarProps = this.getInnerComponentProps();
-      return <Avatar {...avatarProps}/>;
-    }
+    /*  if (this.props.user._id !== this.props.currentMessage.user._id) {
+        const avatarProps = this.getInnerComponentProps();
+        return <Avatar {...avatarProps}/>;
+      }*/
     return null;
   }
 
@@ -53,14 +51,14 @@ export default class Message extends React.Component {
       <View>
         {this.renderDay()}
         <View style={[styles[this.props.position].container, {
-          marginBottom: isSameUser(this.props.currentMessage, this.props.nextMessage) ? 2 : 10,
-        }, this.props.containerStyle[this.props.position]]}>
+        marginBottom: isSameUser(this.props.currentMessage, this.props.nextMessage) ? 2 : 10,
+      }, this.props.containerStyle[this.props.position]]}>
           {this.props.position === 'left' ? this.renderAvatar() : null}
           {this.renderBubble()}
           {this.props.position === 'right' ? this.renderAvatar() : null}
         </View>
       </View>
-    );
+      );
   }
 }
 
